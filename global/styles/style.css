@@ -1250,7 +1250,7 @@ sup {
 .navbar-default .navbar-brand,
 .navbar-default .navbar-brand:focus {
     width: 200px;
-    background-color: #3080bd;
+    background-color: #000;
     height: 60px;
     padding: 20px 25px;
     font-weight: 400;
@@ -1258,13 +1258,26 @@ sup {
     color: #FFFFFF;
 }
 
+.navbar-default .navbar-brand img,
+.navbar-default .navbar-brand p{
+    display: inline-block;
+}
+
 .navbar-default .navbar-brand {
     color: #FFFFFF;
 }
 
+.navbar-default .navbar-brand p {
+    float: right;
+    width: 60%;
+    letter-spacing: normal;
+    line-height: 14px;
+    font-size: 12px;
+}
+
 .navbar-default .navbar-brand:hover {
     color: #FFFFFF;
-    background-color: #f5a212;
+    background-color: #000;
 }
 
 .navbar-brand span {
@@ -2709,4 +2722,88 @@ p.app-version-description {
 
 .panel-heading .buttons-container {
     float: right;
+}
+
+img.foto-autor {
+    max-width: 100%;
+    border-radius: 50% 50%;
+    height: 140px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+/** Multiple images upload **/
+.upload__inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.upload__btn {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: transparent;
+    border-color: #f7a821;
+    border-radius: 10px;
+    padding: 10px;
+    vertical-align: middle;
+}
+.upload__btn p {
+    margin: 0;
+    padding: 0;
+}
+.upload__btn:hover {
+    background-color: unset;
+    transition: all 0.3s ease;
+}
+.upload__btn-box {
+    margin-bottom: 10px;
+}
+.upload__img-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.upload__img-box {
+    width: 140px;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
+.upload__img-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+.upload__img-close:after {
+    content: '\2716';
+    font-size: 14px;
+    color: white;
+}
+.img-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 100%;
+}
+img.image-gallery {
+    max-width: 100%;
 }

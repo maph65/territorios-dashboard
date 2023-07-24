@@ -8,29 +8,9 @@
 class PermisosClass {
 
     protected static $secciones = array(
-        /*'notificaciones' => 'Enviar notificaciones',
-        'news-semanal' => 'Newsletter semanales',
-        'news-mensual' => 'Newsletter Mensual',
-        'news-metacontenidos' => 'Metacontenidos',
-        'news-clientes' => 'Newsletter a clientes',
-        'ibooks' => 'iBooks',
-        'presentaciones' => 'Presentaciones',
-        'circulares' => 'Circulares',
-        'catalogos' => 'Catálogos',
-        'hot-results' => 'Hot+Results',*/
         'usuarios' => 'Administrar usuarios',
     );
     protected static $permisosDefinidos = array(
-        /*'notificaciones',
-        'news-semanal',
-        'news-mensual',
-        'news-metacontenidos',
-        'news-clientes',
-        'ibooks',
-        'presentaciones',
-        'circulares',
-        'catalogos',
-        'hot-results',*/
         'usuarios',
     );
     

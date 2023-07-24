@@ -9,7 +9,8 @@
                 </div>
             </div>
             <a class="navbar-brand" href="<?php echo Doo::conf()->APP_URL; ?>">
-                <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/logo_connect_white_35px.png" alt="Televisa Connect" width="150" />
+                <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/iconapp.png" alt="Territorios" width="40" />
+                <p>Territorios del Saber</p>
             </a>
 
         </div>

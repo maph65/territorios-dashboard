@@ -85,7 +85,7 @@ class UsuarioController extends SecurityController {
         }Doo::loadModel('CtUsuario');
         $usuario = unserialize($_SESSION['usuario']);
         $idUsuario = intval($this->params['idusuario']);
-        if($usuario != $idUsuario ){
+        if($usuario->id_usuario != $idUsuario ){
             $u = new CtUsuario();
             $u->id_usuario = $idUsuario;
             $u->delete();

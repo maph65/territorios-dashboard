@@ -11,7 +11,8 @@
             <!-- Main content-->
             <section class="content">
                 <div class="logo-center center animated slideInDown">
-                    <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/logo_connect_60px.png" alt="Televisa Connect" width="270" />
+                    <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/iconapp.png" alt="Territorios del Saber" width="100" />
+                    <p class="login-name-app">Territorios del saber</p>
                 </div>
                 <div class="center superpadding animated slideInDown">
                     <h1>Error 404</h1>

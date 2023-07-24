@@ -11,7 +11,8 @@
             <!-- Main content-->
             <section class="content">
                 <div class="logo-center center animated slideInUp">
-                    <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/logo_connect_60px.png" alt="Televisa Connect" width="270" />
+                    <img src="<?php echo Doo::conf()->GLOBAL_URL ?>img/iconapp.png" alt="Territorios del Saber" width="100" />
+                    <p class="login-name-app">Territorios del saber</p>
                 </div>
                 <div class="container-center animated slideInDown">
                     <div class="view-header">
@@ -28,7 +29,7 @@
                             <form action="<?php echo Doo::conf()->APP_URL; ?>loginAction" id="loginForm" method="POST" novalidate>
                                 <div class="form-group">
                                     <label class="control-label" for="username">Correo electr&oacute;nico</label>
-                                    <input type="text" placeholder="nombre@televisa.com" title="Ingresa tu correo" required="" value="" name="email" id="email" class="form-control">
+                                    <input type="text" placeholder="nombre@host.com" title="Ingresa tu correo" required="" value="" name="email" id="email" class="form-control">
                                     <!-- <span class="help-block small">Tu usuario o correo electr&oacute;nico</span>-->
                                 </div>
                                 <div class="form-group">

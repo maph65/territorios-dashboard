@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include(Doo::conf()->VIEWC_PATH . '/common/headmetalinks.php'); ?>
+        <?php include(Doo::conf()->VIEWC_PATH . 'common/headmetalinks.php'); ?>
         <!-- croppie -->
         <link rel="stylesheet" href="<?php echo Doo::conf()->GLOBAL_URL . 'vendor/croppie/'; ?>croppie.css" />
         <!-- croppie -->
@@ -12,10 +12,10 @@
         <!-- Wrapper-->
         <div class="wrapper">
             <!-- Header-->
-            <?php include('common/header.php'); ?>
+            <?php include( Doo::conf()->VIEWC_PATH . 'admin/common/header.php'); ?>
             <!-- End header-->
             <!-- menu -->
-            <?php include('common/menu.php'); ?>
+            <?php include(Doo::conf()->VIEWC_PATH . 'admin/common/menu.php'); ?>
             <!-- /menu -->
             <!-- Main content-->
             <section class="content">
@@ -28,7 +28,7 @@
                                     <i class="pe page-header-icon pe-7s-map-marker"></i>
                                 </div>
                                 <div class="header-title">
-                                    <h3 class="m-b-xs">Locaciones</h3>
+                                    <h3 class="m-b-xs">Locaciones de <?php echo $data['estado']->nombre; ?></h3>
                                     <small>Aqu&iacute; podr&aacute;s administrar las locaciones de la App Territorios del Saber.</small>
                                     <br/><br/>
                                     <a href="<?php echo Doo::conf()->APP_URL; ?>locaciones/agregar" class="btn btn-accent">Agregar locación</a>
@@ -39,36 +39,32 @@
                     </div>
                     <!-- /header contenedor -->
                     <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="panel panel-filled">
-                                <div class="panel-heading">
-                                    <div class="panel-tools">
-                                        <a class="panel-toggle"><i class="fa fa-chevron-up"></i></a>
+
+                        <?php
+                        if(is_array($data['locaciones']) && count($data['locaciones'])):
+                            foreach ($data['locaciones'] as $locacion):
+                                ?>
+
+                                <div class="col-sm-12 col-lg-4 col-md-4">
+                                    <div class="panel panel-filled">
+                                        <div class="panel-heading">
+                                            <?php echo $locacion->nombre; ?>
+                                        </div>
+                                        <div class="panel-body">
+                                            <?php echo nl2br($locacion->ubicacion); ?>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <a href="<?php echo Doo::conf()->APP_URL.'locaciones/galeria/'.$locacion->id_locacion; ?>" class="btn btn-accent">Administrar galer&iacute;a</a>
+                                            <a href="<?php echo Doo::conf()->APP_URL.'locaciones/eliminar/'.$locacion->id_locacion; ?>" class="btn btn-danger">Eliminar</a>
+                                        </div>
                                     </div>
-                                    Estados
                                 </div>
-                                <div class="panel-body">
-                                    <?php
-                                    if (!empty($data['estados'])):
-                                        foreach ($data['estados'] as $estado):
-                                            ?>
-                                            <div class="col-sm-12 col-md-6">
-                                                <div class="panel panel-filled panel-c-accent ">
-                                                    <div class="panel-heading">
-                                                        <?php echo $estado['nombre'] .' ('.$estado['cantidad'].')'; ?>
-                                                        <div class="buttons-container">
-                                                            <a href="<?php echo Doo::conf()->APP_URL.'locaciones/estado/'.$estado['id_estado']; ?>" class="btn btn-danger">Ver locaciones</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <?php
-                                        endforeach;
-                                    endif;
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
+
+                            <?php
+                            endforeach;
+                        endif;
+                        ?>
+
                     </div>
                 </div>
             </section>
@@ -154,7 +150,6 @@
                 });
             </script>
         <?php endif; ?>
-
     </body>
 
 </html>

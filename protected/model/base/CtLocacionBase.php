@@ -9,6 +9,11 @@ class CtLocacionBase extends DooModel{
     public $id_locacion;
 
     /**
+     * @var int Max length is 10.  unsigned.
+     */
+    public $id_autor;
+
+    /**
      * @var varchar Max length is 250.
      */
     public $nombre;
@@ -17,6 +22,11 @@ class CtLocacionBase extends DooModel{
      * @var int Max length is 10.  unsigned.
      */
     public $id_estado;
+
+    /**
+     * @var text
+     */
+    public $ubicacion;
 
     /**
      * @var text
@@ -30,11 +40,18 @@ class CtLocacionBase extends DooModel{
 
     public $_table = 'ct_locacion';
     public $_primarykey = 'id_locacion';
-    public $_fields = array('id_locacion','nombre','id_estado','html_cotenido','habiltiado');
+    public $_fields = array('id_locacion','id_autor','nombre','id_estado','ubicacion','html_cotenido','habiltiado');
 
     public function getVRules() {
         return array(
                 'id_locacion' => array(
+                        array( 'integer' ),
+                        array( 'min', 0 ),
+                        array( 'maxlength', 10 ),
+                        array( 'optional' ),
+                ),
+
+                'id_autor' => array(
                         array( 'integer' ),
                         array( 'min', 0 ),
                         array( 'maxlength', 10 ),
@@ -51,6 +68,10 @@ class CtLocacionBase extends DooModel{
                         array( 'min', 0 ),
                         array( 'maxlength', 10 ),
                         array( 'notnull' ),
+                ),
+
+                'ubicacion' => array(
+                        array( 'optional' ),
                 ),
 
                 'html_cotenido' => array(
