@@ -48,4 +48,10 @@ $route['get']['/api/v1/get-locaciones'] = array('ApiController', 'getLocaciones'
 $route['get']['/api/v1/get-locaciones/:codigo'] = array('ApiController', 'getLocacionesByEstado');
 $route['*']['/api/v1/search/locaciones'] = array('ApiController', 'getLocacionesByString');
 
+//usuarios
+$route['*']['/usuarios'] = array('UsuarioController', 'index');
+$route['post']['/usuario/crear'] = array('UsuarioController', 'actionCrearUsuario');
+$route['*']['/usuario/eliminar/:idusuario'] = array('UsuarioController', 'eliminarUsuario');
+
+
 ?>

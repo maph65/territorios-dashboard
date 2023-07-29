@@ -55,7 +55,7 @@
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="panel panel-filled panel-c-accent ">
                                                     <div class="panel-heading">
-                                                        <?php echo $estado['nombre'] .' ('.$estado['cantidad'].')'; ?>
+                                                        <?php echo utf8_encode($estado['nombre']) .' ('.$estado['cantidad'].')'; ?>
                                                         <div class="buttons-container">
                                                             <a href="<?php echo Doo::conf()->APP_URL.'locaciones/estado/'.$estado['id_estado']; ?>" class="btn btn-danger">Ver locaciones</a>
                                                         </div>

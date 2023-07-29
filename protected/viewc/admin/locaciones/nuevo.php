@@ -49,7 +49,7 @@
                                                 <?php
                                                 if (!empty($data['estados'])):
                                                     foreach ($data['estados'] as $estado):
-                                                        echo '<option value="' . $estado->id_estado . '">' . $estado->nombre . '</option>';
+                                                        echo '<option value="' . $estado->id_estado . '">' . utf8_encode($estado->nombre) . '</option>';
                                                     endforeach;
                                                 endif;
                                                 ?>
