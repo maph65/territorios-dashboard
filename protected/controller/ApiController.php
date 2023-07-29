@@ -24,7 +24,7 @@ class ApiController extends DooController {
         if(!empty($estados)){
             foreach ($estados as $_edo){
                 $data['codigo'] = $_edo['codigo'];
-                $data['nombre'] = $_edo['nombre'];
+                $data['nombre'] = utf8_encode($_edo['nombre']);
                 $data['locaciones'] = $_edo['cantidad'];
                 if($_edo['cantidad'] > 0){
                     $red = 255 - (int)($invertedBaseColor['r'] / ( $maxQty / $_edo['cantidad']));
