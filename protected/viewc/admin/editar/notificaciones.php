@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="<?php echo Doo::conf()->GLOBAL_URL . 'vendor/croppie/'; ?>croppie.css" />
         <!-- croppie -->
         <!-- Page title -->
-        <title><?php echo Doo::conf()->APP_NAME; ?> | Notificaciones</title>
+        <title><?php echo Doo::conf()->APP_NAME; ?> | Locaciones</title>
     </head>
     <body>
         <!-- Wrapper-->

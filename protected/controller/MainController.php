@@ -25,13 +25,7 @@ class MainController extends SecurityController {
         $usuario = unserialize($_SESSION['usuario']);
         $permisos = isset($usuario->permisos) ? unserialize($usuario->permisos) : array();
         //print_r($permisos);
-        $home = NULL;
-        foreach ($permisos as $k => $p){
-            if($p){
-                $home = $k;
-                break;
-            }
-        }
+        $home = 'locaciones';
         if(!is_null($home)){
             header('location:'.Doo::conf()->APP_URL.$home);
         }else{

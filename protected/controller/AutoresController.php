@@ -103,7 +103,7 @@ class AutoresController extends SecurityController {
             }
 
         } else {
-            header('location:' . Doo::conf()->APP_URL . 'notificaciones?error=1');
+            header('location:' . Doo::conf()->APP_URL . 'locaciones?error=1');
         }
     }
 
