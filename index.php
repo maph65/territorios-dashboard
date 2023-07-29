@@ -14,13 +14,13 @@ include $config['BASE_PATH'].'app/DooConfig.php';
 Doo::conf()->set($config);
 
 # remove this if you wish to see the normal PHP error view.
-//include $config['BASE_PATH'].'diagnostic/debug.php';
+include $config['BASE_PATH'].'diagnostic/debug.php';
 
 # database usage
 //Doo::useDbReplicate();	#for db replication master-slave usage
 Doo::db()->setMap($dbmap);
 Doo::db()->setDb($dbconfig, $config['APP_MODE']);
-Doo::db()->sql_tracking = true;	#for debugging/profiling purpose
+//Doo::db()->sql_tracking = true;	#for debugging/profiling purpose
 
 Doo::app()->route = $route;
 

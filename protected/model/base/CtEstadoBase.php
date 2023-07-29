@@ -13,9 +13,14 @@ class CtEstadoBase extends DooModel{
      */
     public $nombre;
 
+    /**
+     * @var varchar Max length is 3.
+     */
+    public $codigo;
+
     public $_table = 'ct_estado';
     public $_primarykey = 'id_estado';
-    public $_fields = array('id_estado','nombre');
+    public $_fields = array('id_estado','nombre','codigo');
 
     public function getVRules() {
         return array(
@@ -29,6 +34,11 @@ class CtEstadoBase extends DooModel{
                 'nombre' => array(
                         array( 'maxlength', 120 ),
                         array( 'notnull' ),
+                ),
+
+                'codigo' => array(
+                        array( 'maxlength', 3 ),
+                        array( 'optional' ),
                 )
             );
     }

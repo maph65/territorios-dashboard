@@ -1,6 +1,9 @@
 <?php
 $dbmap = array();
 
+//CtAutor
+$dbmap['CtAutor']['has_many']['CtLocacion'] = array('foreign_key'=>'id_autor');
+
 //CtEstado
 $dbmap['CtEstado']['has_many']['CtLocacion'] = array('foreign_key'=>'id_estado');
 
@@ -11,6 +14,7 @@ $dbmap['CtLocacion']['has_many']['CtMedia'] = array('foreign_key'=>'id_locacion'
 
 //CtLocacion
 $dbmap['CtLocacion']['belongs_to']['CtEstado'] = array('foreign_key'=>'id_estado');
+$dbmap['CtLocacion']['belongs_to']['CtAutor'] = array('foreign_key'=>'id_autor');
 
 //CtComentario
 $dbmap['CtComentario']['belongs_to']['CtLocacion'] = array('foreign_key'=>'id_locacion');
