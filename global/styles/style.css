@@ -2807,3 +2807,21 @@ img.foto-autor {
 img.image-gallery {
     max-width: 100%;
 }
+.ck-editor__editable_inline {
+    min-height: 400px;
+}
+
+.ck-content h1,
+.ck-content h2,
+.ck-content h3,
+.ck-content h4,
+.ck-content h5,
+.ck-content h6,
+.ck-content p,
+.ck-content a,
+.ck-content span{
+    color:#000;
+}
+.panel .ck-content {
+    color: #000;
+}

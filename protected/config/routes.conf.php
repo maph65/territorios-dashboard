@@ -39,6 +39,7 @@ $route['*']['/locaciones/estado/:idestado'] = array('LocacionesController', 'loc
 $route['*']['/locaciones/galeria/:idlocacion'] = array('LocacionesController', 'administrarGaleria');
 $route['*']['/locaciones/agregar'] = array('LocacionesController', 'nuevaLocacion');
 $route['post']['/locaciones/guardar'] = array('LocacionesController', 'guardarLocacion');
+$route['get']['/locaciones/editar/:idlocacion'] = array('LocacionesController', 'editarLocacion');
 $route['get']['/locaciones/eliminar/:idlocacion'] = array('LocacionesController', 'eliminarLocacion');
 $route['post']['/galeria/publicar/:idlocacion'] = array('LocacionesController', 'subirImagenes');
 $route['get']['/galeria/eliminar/:idmedia'] = array('LocacionesController', 'eliminarImagen');

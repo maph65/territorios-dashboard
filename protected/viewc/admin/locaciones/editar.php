@@ -50,11 +50,16 @@
                                     <div class="panel-body">
                                         <div class="form-group col-md-12 col-lg-6">
                                             <label>Selecciona un estado:</label>
+                                            <input type="hidden" id="idlocacion" name="idlocacion" value="<?php echo $data['locacion']->id_locacion; ?>">
                                             <select class="form-control" name="estado" id="estado">
                                                 <?php
                                                 if (!empty($data['estados'])):
                                                     foreach ($data['estados'] as $estado):
-                                                        echo '<option value="' . $estado->id_estado . '">' . utf8_encode($estado->nombre) . '</option>';
+                                                        $selected = '';
+                                                        if($data['locacion']->id_estado == $estado->id_estado){
+                                                            $selected = 'selected="selected"';
+                                                        }
+                                                        echo '<option value="' . $estado->id_estado . '" '.$selected.'>' . utf8_encode($estado->nombre) . '</option>';
                                                     endforeach;
                                                 endif;
                                                 ?>
@@ -62,12 +67,12 @@
                                         </div>
                                         <div class="form-group col-md-12 col-lg-6">
                                             <label>Nombre de la locaci&oacute;n</label>
-                                            <input type="text" class="form-control" name="nombre-locacion" id="nombre-locacion" placeholder="Nombre" maxlength="110">
+                                            <input type="text" class="form-control" name="nombre-locacion" id="nombre-locacion" placeholder="Nombre" value="<?php echo $data['locacion']->nombre  ?>" maxlength="110">
                                         </div>
                                         <br/>
                                         <div class="form-group col-md-12 col-lg-6">
                                             <label>Direcci&oacute;n:</label>
-                                            <textarea class="form-control" rows="3"  name="direccion" id="direccion" placeholder="Direcci&oacute;n"></textarea>
+                                            <textarea class="form-control" rows="3"  name="direccion" id="direccion" placeholder="Direcci&oacute;n"><?php echo $data['locacion']->ubicacion  ?></textarea>
                                         </div>
                                         <div class="form-group col-md-12 col-lg-6">
                                             <label>Autor:</label>
@@ -75,7 +80,11 @@
                                                 <?php
                                                 if (!empty($data['autores'])):
                                                     foreach ($data['autores'] as $autor):
-                                                        echo '<option value="' . $autor->id_autor . '">' . $autor->nombre . '</option>';
+                                                        $selected = '';
+                                                        if($data['locacion']->id_autor ==  $autor->id_autor ){
+                                                            $selected = 'selected="selected"';
+                                                        }
+                                                        echo '<option value="' . $autor->id_autor . '" '.$selected.'>' . $autor->nombre . '</option>';
                                                     endforeach;
                                                 endif;
                                                 ?>
@@ -85,13 +94,21 @@
                                         <div class="form-group col-md-12 col-lg-6">
                                             <label>Visible:</label>
                                             <br/>
-                                            <input type="checkbox" id="visible" name="visible">
+                                            <?php
+                                            $inApp = '';
+                                            if($data['locacion']->habiltiado ){
+                                                $inApp = 'checked="checked"';
+                                            }
+                                            ?>
+                                            <input type="checkbox" id="visible" name="visible" <?php echo $inApp; ?>>
                                             <label for="visible">Visible en la App</label>
                                         </div>
                                         <br />
                                         <div class="form-group col-md-12 col-lg-12">
                                             <label>Contenido</label>
-                                            <textarea class="form-control" rows="20" placeholder="Contenido" name="contenido" id="contenido"></textarea>
+                                            <textarea class="form-control" rows="20" placeholder="Contenido" name="contenido" id="contenido">
+                                                <?php echo $data['locacion']->html_cotenido ?>
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="panel-footer">

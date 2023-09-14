@@ -55,6 +55,7 @@
                                         </div>
                                         <div class="panel-footer">
                                             <a href="<?php echo Doo::conf()->APP_URL.'locaciones/galeria/'.$locacion->id_locacion; ?>" class="btn btn-accent">Administrar galer&iacute;a</a>
+                                            <a href="<?php echo Doo::conf()->APP_URL.'locaciones/editar/'.$locacion->id_locacion; ?>" class="btn btn-accent">Editar locación</a>
                                             <a href="<?php echo Doo::conf()->APP_URL.'locaciones/eliminar/'.$locacion->id_locacion; ?>" class="btn btn-danger">Eliminar</a>
                                         </div>
                                     </div>

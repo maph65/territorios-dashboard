@@ -69,6 +69,36 @@ class LocacionesController extends SecurityController {
         $this->renderc('admin/locaciones/nuevo',$this->data);
     }
 
+    public function editarLocacion(){
+        session_start();
+        if (!self::validarSesion()) {
+            header('location:' . Doo::conf()->APP_URL . '?error=2');
+            session_destroy();
+            die();
+        }
+        $idLocacion = (int)$this->params['idlocacion'];
+        Doo::loadModel('CtLocacion');
+        Doo::loadModel('CtEstado');
+        Doo::loadModel('CtAutor');
+        Doo::loadModel('CtUsuario');
+        $this->data['usr'] = unserialize($_SESSION['usuario']);
+        $locacion = new CtLocacion();
+        $locacion->id_locacion = $idLocacion;
+        $detalleLocacion = $locacion->getOne();
+        if(!empty($detalleLocacion)){
+            $estado = new CtEstado();
+            $this->data['estados'] = $estado->find();
+            $autor = new CtAutor();
+            $this->data['autores'] = $autor->find();
+            $this->data['locacion'] = $detalleLocacion;
+            $this->data['location'] = 'locaciones';
+            $this->renderc('admin/locaciones/editar',$this->data);
+        }else{
+            header('location:' . Doo::conf()->APP_URL . '?error=2');
+        }
+
+    }
+
     public function guardarLocacion(){
         session_start();
         if (!self::validarSesion()) {
@@ -78,6 +108,13 @@ class LocacionesController extends SecurityController {
         }
         Doo::loadModel('CtLocacion');
         $locacion = new CtLocacion();
+        if(isset($_POST['idlocacion'])){
+            $locacion->id_locacion = (int)$_POST['idlocacion'];
+            $locacion = $locacion->getOne();
+            if(empty($locacion)){
+                $locacion = new CtLocacion();
+            }
+        }
         if ( isset($_POST['estado']) && !empty($_POST['estado'])
             && isset($_POST['nombre-locacion']) && !empty($_POST['nombre-locacion'])
             && isset($_POST['direccion']) && !empty($_POST['direccion'])
@@ -92,7 +129,11 @@ class LocacionesController extends SecurityController {
             $locacion->habiltiado = (isset($_POST['visible']) && $_POST['visible']) ? 1 : 0;
             $val = $locacion->validate();
             if(empty($val)){
-                $result = $locacion->insert();
+                if($locacion->id_locacion){
+                    $result = $locacion->update();
+                }else{
+                    $result = $locacion->insert();
+                }
                 if($result){
                     header('location:' . Doo::conf()->APP_URL . 'locaciones/estado/'.$locacion->id_estado.'?success=1');
                 }else{
