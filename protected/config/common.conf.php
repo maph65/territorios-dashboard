@@ -69,8 +69,3 @@ $lifetime = 60*60*24*365;
 session_set_cookie_params($lifetime);
 session_name($config['APP_COOKIE_NAME']);
 //setcookie(session_name(),session_id(), time() + $lifetime);
-
-$config['VIMEO_CLIENT_ID'] = '4b1b3cf87d45fc83d392f0451b6e28ee4ed5bf41';
-$config['VIMEO_CLIENT_SECRET'] = 'FJP8siqt5+x70RVG9Vt8GEQEAXJYqbIovRBMidESxvw5xelP6WfTtefK5td+lm5s4lVmcc2cu8Gh5r281JGmjmLws49xU2/dYVeSEUkXLI+YeNYK2JdbkJAXSHbRo6Yw';
-$config['VIMEO_TOKEN'] = 'c2701bba22a007c359e25ce378844db5'; //15f15434887a37af251663170ad9e1d8';
-

@@ -122,6 +122,11 @@ CREATE TABLE IF NOT EXISTS `territorios_saber`.`ct_comentario` (
 ENGINE = InnoDB;
 
 
+INSERT INTO `ct_usuario` (`id_usuario`, `correo`, `nombre`, `passwd`, `activo`, `permisos`)
+VALUES
+    (1, 'admin@admin.com', 'Admin', 'd30b680f7a3a51c68d1158cd89e04b16a810f60c6p3g0', 1, 'a:1:{s:8:\"usuarios\";b:1;}');
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
