@@ -5,7 +5,6 @@
         <!-- ckeditor -->
         <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/translations/es.js"></script>
-
         <!-- /ckeditor -->
         <!-- croppie -->
         <link rel="stylesheet" href="<?php echo Doo::conf()->GLOBAL_URL . 'vendor/croppie/'; ?>croppie.css" />

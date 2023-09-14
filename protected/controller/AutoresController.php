@@ -36,6 +36,34 @@ class AutoresController extends SecurityController {
         $this->renderc('admin/autores/nuevo',$this->data);
     }
 
+    public function editarAutor(){
+        session_start();
+        if (!self::validarSesion()) {
+            header('location:' . Doo::conf()->APP_URL . '?error=2');
+            session_destroy();
+            die();
+        }
+        $idAutor = (int)$this->params['idautor'];
+        Doo::loadModel('CtAutor');
+        Doo::loadModel('CtLocacion');
+        Doo::loadModel('CtEstado');
+        Doo::loadModel('CtUsuario');
+        $this->data['usr'] = unserialize($_SESSION['usuario']);
+
+        $autor = new CtAutor();
+        $autor->id_autor = $idAutor;
+        $autor = $autor->getOne();
+        if(!empty($autor)){
+            $estado = new CtEstado();
+            $this->data['estados'] = $estado->find();
+            $this->data['location'] = 'autores';
+            $this->data['autor'] = $autor;
+            $this->renderc('admin/autores/editar',$this->data);
+        }else{
+            header('location:' . Doo::conf()->APP_URL . 'autores?error=4');
+        }
+    }
+
     public function guardarAutor() {
         session_start();
         if (!self::validarSesion()) {
@@ -49,13 +77,25 @@ class AutoresController extends SecurityController {
         Doo::loadHelper('DooGdImage');
         Doo::autoload('DooDbExpression');
         Doo::loadClass('SlugifyClass');
+
         if ( isset($_POST['nombre'])
             && !empty($_POST['nombre'])
             && isset($_POST['contenido'])
             && !empty($_POST['contenido'])
         ) {
-
+            $autor = new CtAutor();
+            if(isset($_POST['idautor'])){
+                $autor = new CtAutor();
+                $autor->id_autor = (int)$_POST['idautor'];
+                $autor = $autor->getOne();
+                if(empty($autor)){
+                    $autor = new CtAutor();
+                }
+            }
             $fotoAutor = '';
+            if($autor->url_foto){
+                $fotoAutor = $autor->url_foto;
+            }
             $gd = new DooGdImage(Doo::conf()->GLOBAL_PATH . 'uploads/autores/', Doo::conf()->GLOBAL_PATH . 'uploads/autores/');
             $gd->generatedQuality = 100;
             if (isset($_FILES['imagen']) && $gd->checkImageExtension('imagen')) {
@@ -85,14 +125,16 @@ class AutoresController extends SecurityController {
                     unlink(Doo::conf()->GLOBAL_PATH . 'uploads/autores/' . $thumbName . '.' . $gd->generatedType);
                 }
             }
-
-            $autor = new CtAutor();
             $autor->nombre = $_POST['nombre'];
             $autor->bilografia = $_POST['contenido'];
             $autor->url_foto = $fotoAutor;
             $val = $autor->validate();
             if(empty($val)){
-                $result = $autor->insert();
+                if($autor->id_autor){
+                    $result = $autor->update();
+                }else{
+                    $result = $autor->insert();
+                }
                 if($result){
                     header('location:' . Doo::conf()->APP_URL . 'autores?success=1');
                 }else{

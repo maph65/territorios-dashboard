@@ -56,6 +56,7 @@
                                             ?>
                                             <img src="<?php echo $urlFoto; ?>" class="foto-autor">
                                         </div>
+                                        <div class="panel-footer"><a class="btn btn-warning" href="<?php echo Doo::conf()->APP_URL; ?>autores/editar/<?php echo $autor->id_autor; ?>">Editar</a></div>
                                         <div class="panel-footer"><a class="btn btn-danger" href="<?php echo Doo::conf()->APP_URL; ?>autores/eliminar/<?php echo $autor->id_autor; ?>">Eliminar</a></div>
                                     </div>
                                 </div>

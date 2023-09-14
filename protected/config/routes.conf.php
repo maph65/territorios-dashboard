@@ -31,6 +31,7 @@ $route['*']['/autores'] = array('AutoresController', 'index');
 $route['*']['/autores/:idautor'] = array('AutoresController', 'editarAutor');
 $route['*']['/autores/nuevo'] = array('AutoresController', 'nuevoAutor');
 $route['post']['/autores/nuevo/crear'] = array('AutoresController', 'guardarAutor');
+$route['*']['/autores/editar/:idautor'] = array('AutoresController', 'editarAutor');
 $route['get']['/autores/eliminar/:idautor'] = array('AutoresController', 'eliminarAutor');
 
 //Locaciones

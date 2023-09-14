@@ -1,3 +1,4 @@
+<?php $autor = $data['autor']; ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +11,7 @@
         <link rel="stylesheet" href="<?php echo Doo::conf()->GLOBAL_URL . 'vendor/croppie/'; ?>croppie.css" />
         <!-- croppie -->
         <!-- Page title -->
-        <title><?php echo Doo::conf()->APP_NAME; ?> | Nuevo autor</title>
+        <title><?php echo Doo::conf()->APP_NAME; ?> | Editar autor</title>
     </head>
     <body>
         <!-- Wrapper-->
@@ -44,21 +45,22 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="panel panel-filled">
                                 <div class="panel-heading">
-                                    Nuevo autor
+                                    Editar autor
                                 </div>
                                 <div class="panel-body">
                                     <form method="POST" action="<?php echo Doo::conf()->APP_URL . 'autores/nuevo/crear'; ?>" enctype="multipart/form-data">
+                                        <input type="hidden" name="idautor" id="idautor" value="<?php echo $autor->id_autor; ?>" />
                                         <div class=form-group>
                                             <label>Nombre</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" maxlength="120">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" maxlength="120" value="<?php echo $autor->nombre; ?>">
                                         </div>
                                         <br/>
                                         <div class=form-group>
                                             <label>Biograf&iacute;a</label>
-                                            <textarea class="form-control" rows="3" placeholder="Contenido" name="contenido" id="contenido"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Contenido" name="contenido" id="contenido"><?php echo $autor->bilografia; ?></textarea>
                                         </div>
                                         <div class=form-group>
-                                            <label>Foto del autor</label>
+                                            <label>Subir nueva foto</label>
                                             <input type="file" class="form-control" name="imagen" id="imagen">
                                             <input type="hidden" name="viewport-x" id="viewport-x" value="350">
                                             <input type="hidden" name="viewport-y" id="viewport-y" value="350">
